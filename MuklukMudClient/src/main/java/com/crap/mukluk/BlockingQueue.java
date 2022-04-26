@@ -4,37 +4,37 @@ import java.util.LinkedList;
 
 public class BlockingQueue<T>
 {
-	private LinkedList<T> list;
+    private LinkedList<T> list;
 
-	public BlockingQueue()
-	{
-		list = new LinkedList<T>();
-	}
+    public BlockingQueue()
+    {
+        list = new LinkedList<T>();
+    }
 
-	public synchronized void addMessage(T msg)
-	{
-		list.addLast(msg);
+    public synchronized void addMessage(T msg)
+    {
+        list.addLast(msg);
 
-		notifyAll();
-	}
+        notifyAll();
+    }
 
-	// Gets a message from the queue. If none are available, blocks until some become available.
-	// Returns null if thread interrupted
-	// Returns null if queue will no longer be delivering messages
-	public synchronized T getMessage()
-	{
-		while (list.size() == 0 /*&& !shutDownFlag*/)
-		{
-			try
-			{
-				wait();
-			}
-			catch (InterruptedException e)
-			{
-				return null;
-			}
-		}
+    // Gets a message from the queue. If none are available, blocks until some become available.
+    // Returns null if thread interrupted
+    // Returns null if queue will no longer be delivering messages
+    public synchronized T getMessage()
+    {
+        while (list.size() == 0 /*&& !shutDownFlag*/)
+        {
+            try
+            {
+                wait();
+            }
+            catch (InterruptedException e)
+            {
+                return null;
+            }
+        }
 
-		return list.removeFirst();
-	}
+        return list.removeFirst();
+    }
 }

@@ -15,172 +15,200 @@ import android.text.SpannableStringBuilder;
 import android.text.style.CharacterStyle;
 import android.util.Log;
 
-public class ConsoleTextHistory {
-	private static final String TAG = "ConsoleTextHistory";
-	private static final ObjectMapper mapper = new ObjectMapper();
-	
-	private LinkedList<SpannableStringBuilder> _items;
-	private int _maximumSize;
-	private boolean _lastLineComplete; // does previous line end with \n
+public class ConsoleTextHistory
+{
+    private static final String TAG = "ConsoleTextHistory";
+    private static final ObjectMapper mapper = new ObjectMapper();
 
-	public ConsoleTextHistory(int maxLength) {
-		_items = new LinkedList<SpannableStringBuilder>();
-		_maximumSize = maxLength;
-		_lastLineComplete = false;
-	}
+    private LinkedList<SpannableStringBuilder> _items;
+    private int _maximumSize;
+    private boolean _lastLineComplete; // does previous line end with \n
 
-	public void add(CharSequence characters) {
-		if (_items.size() == 0 || _lastLineComplete) {
-			_items.add(new SpannableStringBuilder(characters));
-			adjustSize();
-		}
-		else
-			_items.getLast().append(characters);
+    public ConsoleTextHistory(int maxLength)
+    {
+        _items = new LinkedList<SpannableStringBuilder>();
+        _maximumSize = maxLength;
+        _lastLineComplete = false;
+    }
 
-		if (characters.length() == 0)
-			_lastLineComplete = false;
-		else
-			_lastLineComplete = (characters.charAt(characters.length() - 1) == '\n');
-	}
+    public void add(CharSequence characters)
+    {
+        if (_items.size() == 0 || _lastLineComplete)
+        {
+            _items.add(new SpannableStringBuilder(characters));
+            adjustSize();
+        }
+        else
+            _items.getLast().append(characters);
 
-	public void setMaximumSize(int newMaximumSize) {
-		_maximumSize = newMaximumSize;
+        if (characters.length() == 0)
+            _lastLineComplete = false;
+        else
+            _lastLineComplete = (characters.charAt(characters.length() - 1) == '\n');
+    }
 
-		adjustSize();
-	}
+    public void setMaximumSize(int newMaximumSize)
+    {
+        _maximumSize = newMaximumSize;
 
-	// styleStream may be null if file doesn't exist
-	public SpannableStringBuilder loadFromFile(FileInputStream fileStream, FileInputStream styleJacksonStream) {
-		SpannableStringBuilder sb = new SpannableStringBuilder();
-		BufferedReader br = null;
+        adjustSize();
+    }
 
-		try {
-			String line;
-			br = new BufferedReader(new InputStreamReader(fileStream));
-			//int lineNum = 0;
+    // styleStream may be null if file doesn't exist
+    public SpannableStringBuilder loadFromFile(FileInputStream fileStream, FileInputStream styleJacksonStream)
+    {
+        SpannableStringBuilder sb = new SpannableStringBuilder();
+        BufferedReader br = null;
 
-			try {
-				while ((line = br.readLine()) != null) {
-					line += "\n";
+        try
+        {
+            String line;
+            br = new BufferedReader(new InputStreamReader(fileStream));
+            //int lineNum = 0;
 
-					add(line);
-					//lineNum++;
-				}
-			}
-			catch (IOException ex) {
-				Log.e(TAG, "IOException trying to load console text history for world.");
-				Log.e(TAG, ex.toString());
-			}
-		}
-		finally {
-			try {
-				br.close();
-			}
-			catch (Exception ex) {}
-		}
+            try
+            {
+                while ((line = br.readLine()) != null)
+                {
+                    line += "\n";
 
-		LineStyleInfo[] lsiList = null;
+                    add(line);
+                    //lineNum++;
+                }
+            }
+            catch (IOException ex)
+            {
+                Log.e(TAG, "IOException trying to load console text history for world.");
+                Log.e(TAG, ex.toString());
+            }
+        }
+        finally
+        {
+            try
+            {
+                br.close();
+            }
+            catch (Exception ex) {}
+        }
 
-		
-		if (styleJacksonStream != null) {
-			try {
-				lsiList = mapper.readValue(styleJacksonStream, LineStyleInfo[].class);
-			}
-			catch (Exception ex) {
-				Log.e(TAG, "Error occured reading Jackson JSON file: " + ex.toString());
-			}
-		}
+        LineStyleInfo[] lsiList = null;
 
-		if (lsiList != null) {
-			for (LineStyleInfo lsi : lsiList) {
-				if (lsi.lineNumber < _items.size() && lsi.start >= 0
-						&& lsi.end < _items.get(lsi.lineNumber).length()) {
-					_items.get(lsi.lineNumber).setSpan(AnsiUtility.getStyleFromAnsiCode(lsi.ansiCode, false),
-							lsi.start, lsi.end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-				}
-				else {
-					Log.w(TAG, "Invalid span in history: " + "Line: " + lsi.lineNumber + " Start: "
-							+ lsi.start + " End: " + lsi.end);
 
-					if (lsi.lineNumber > _items.size())
-						Log.w(TAG, _items.size() + " lines in history, span is for line " + lsi.lineNumber);
-					else if (lsi.start < 0)
-						Log.w(TAG, "span started at character " + lsi.start);
-					else if (lsi.end >= _items.get(lsi.lineNumber).length())
-						Log.w(TAG,
-								"span ends at " + lsi.end + " but line is only "
-										+ _items.get(lsi.lineNumber).length());
-				}
-			}
-		}
+        if (styleJacksonStream != null)
+        {
+            try
+            {
+                lsiList = mapper.readValue(styleJacksonStream, LineStyleInfo[].class);
+            }
+            catch (Exception ex)
+            {
+                Log.e(TAG, "Error occured reading Jackson JSON file: " + ex.toString());
+            }
+        }
 
-		for (SpannableStringBuilder ssb : _items)
-			sb.append(ssb);
+        if (lsiList != null)
+        {
+            for (LineStyleInfo lsi : lsiList)
+            {
+                if (lsi.lineNumber < _items.size() && lsi.start >= 0
+                        && lsi.end < _items.get(lsi.lineNumber).length())
+                {
+                    _items.get(lsi.lineNumber).setSpan(AnsiUtility.getStyleFromAnsiCode(lsi.ansiCode, false),
+                                                       lsi.start, lsi.end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
+                else
+                {
+                    Log.w(TAG, "Invalid span in history: " + "Line: " + lsi.lineNumber + " Start: "
+                          + lsi.start + " End: " + lsi.end);
 
-		return sb;
-	}
+                    if (lsi.lineNumber > _items.size())
+                        Log.w(TAG, _items.size() + " lines in history, span is for line " + lsi.lineNumber);
+                    else if (lsi.start < 0)
+                        Log.w(TAG, "span started at character " + lsi.start);
+                    else if (lsi.end >= _items.get(lsi.lineNumber).length())
+                        Log.w(TAG,
+                              "span ends at " + lsi.end + " but line is only "
+                              + _items.get(lsi.lineNumber).length());
+                }
+            }
+        }
 
-	// Returns whether or not there was anything to write
-	public boolean writeToFiles(FileOutputStream textFileStream, FileOutputStream styleJacksonStream) {
-		if (_items.size() > 0) {
-			PrintWriter textPw = null;
-			LinkedList<LineStyleInfo> allStyles = new LinkedList<LineStyleInfo>();
+        for (SpannableStringBuilder ssb : _items)
+            sb.append(ssb);
 
-			try {
-				textPw = new PrintWriter(textFileStream);
+        return sb;
+    }
 
-				int lineNum = 0;
-				String s;
-				CharacterStyle[] lineSpans;
+    // Returns whether or not there was anything to write
+    public boolean writeToFiles(FileOutputStream textFileStream, FileOutputStream styleJacksonStream)
+    {
+        if (_items.size() > 0)
+        {
+            PrintWriter textPw = null;
+            LinkedList<LineStyleInfo> allStyles = new LinkedList<LineStyleInfo>();
 
-				for (SpannableStringBuilder ssb : _items) {
-					s = ssb.toString();
-					textPw.print(s);
+            try
+            {
+                textPw = new PrintWriter(textFileStream);
 
-					lineSpans = ssb.getSpans(0, s.length() - 1, CharacterStyle.class);
+                int lineNum = 0;
+                String s;
+                CharacterStyle[] lineSpans;
 
-					for (CharacterStyle cs : lineSpans) {
-						LineStyleInfo lsi = new LineStyleInfo();
+                for (SpannableStringBuilder ssb : _items)
+                {
+                    s = ssb.toString();
+                    textPw.print(s);
 
-						lsi.lineNumber = lineNum;
-						lsi.start = ssb.getSpanStart(cs);
-						lsi.end = ssb.getSpanEnd(cs);
-						lsi.ansiCode = AnsiUtility.getAnsiCodeFromStyle(cs);
+                    lineSpans = ssb.getSpans(0, s.length() - 1, CharacterStyle.class);
 
-						allStyles.add(lsi);
-					}
+                    for (CharacterStyle cs : lineSpans)
+                    {
+                        LineStyleInfo lsi = new LineStyleInfo();
 
-					lineNum++;
-				}
-			}
-			finally {
-				try {
-					textPw.close();
-				}
-				catch (Exception ex) {}
-			}
+                        lsi.lineNumber = lineNum;
+                        lsi.start = ssb.getSpanStart(cs);
+                        lsi.end = ssb.getSpanEnd(cs);
+                        lsi.ansiCode = AnsiUtility.getAnsiCodeFromStyle(cs);
 
-			try {
-				LineStyleInfo[] lsiArray = allStyles.toArray(new LineStyleInfo[0]);
-				mapper.writeValue(styleJacksonStream, lsiArray);
-			}
-			catch (Exception ex)
-			{
-				Log.e(TAG, "Error writing jackson JSON to file: " + ex.toString());
-			}
+                        allStyles.add(lsi);
+                    }
 
-			return true;
-		}
-		else
-			return false;
-	}
+                    lineNum++;
+                }
+            }
+            finally
+            {
+                try
+                {
+                    textPw.close();
+                }
+                catch (Exception ex) {}
+            }
 
-	private void adjustSize() {
-		int currentSize = _items.size();
-		int diff = currentSize - _maximumSize;
+            try
+            {
+                LineStyleInfo[] lsiArray = allStyles.toArray(new LineStyleInfo[0]);
+                mapper.writeValue(styleJacksonStream, lsiArray);
+            }
+            catch (Exception ex)
+            {
+                Log.e(TAG, "Error writing jackson JSON to file: " + ex.toString());
+            }
 
-		// Clear list
-		if (diff > 0)
-			_items.subList(0, currentSize - _maximumSize).clear();
-	}
+            return true;
+        }
+        else
+            return false;
+    }
+
+    private void adjustSize()
+    {
+        int currentSize = _items.size();
+        int diff = currentSize - _maximumSize;
+
+        // Clear list
+        if (diff > 0)
+            _items.subList(0, currentSize - _maximumSize).clear();
+    }
 }

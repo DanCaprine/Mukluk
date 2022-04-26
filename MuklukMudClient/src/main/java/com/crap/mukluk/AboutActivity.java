@@ -10,23 +10,23 @@ import android.widget.TextView;
 public class AboutActivity extends Activity
 {
     @Override
-    public void onCreate(Bundle savedInstanceState) 
+    public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about);
-        
+
         TextView version = (TextView) findViewById(R.id.text_version);
         PackageManager pm = getPackageManager();
         PackageInfo pInfo;
-        
+
         try
         {
-	        pInfo = pm.getPackageInfo("com.crap.mukluk", 0);
-	        version.setText(pInfo.versionName);
+            pInfo = pm.getPackageInfo("com.crap.mukluk", 0);
+            version.setText(pInfo.versionName);
         }
         catch (NameNotFoundException ex)
         {
-        	version.setText("Unknown Version");
+            version.setText("Unknown Version");
         }
     }
 }
