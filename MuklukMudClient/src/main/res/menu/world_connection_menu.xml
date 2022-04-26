@@ -1,0 +1,32 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item 
+        android:id="@+id/menu_item_connect"
+        android:title="@string/menu_connect"
+        android:icon="@android:drawable/ic_menu_upload"
+        android:showAsAction="always"
+        />
+     <item
+        android:id="@+id/menu_item_disconnect"
+        android:title="@string/menu_disconnect"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:showAsAction="always"
+        />
+    <item
+        android:id="@+id/menu_item_edit_current_world"
+        android:title="@string/menu_edit_current_world"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:showAsAction="ifRoom"
+        />
+   <item
+        android:id="@+id/menu_item_global_settings"
+        android:title="@string/menu_global_settings"
+        android:showAsAction="never"
+        />
+    <item
+        android:id="@+id/menu_item_help"
+        android:title="@string/menu_help"
+        android:showAsAction="never"
+        />
+</menu>

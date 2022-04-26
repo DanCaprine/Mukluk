@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mukluk</string>
+    
+    <string name="button_cancel">Cancel</string>
+    <string name="button_default">Default</string>
+    <string name="button_dont_save">Don\'t Save</string>
+    <string name="button_okay">OK</string>
+    <string name="button_save">Save</string>
+    <string name="menu_global_settings">Global Settings</string>
+    <string name="toast_world_added">%1$s added to world list.</string>
+    <string name="toast_world_saved">%1$s saved.</string>
+    
+    <!--  Service  -->
+    <string name="service_description_singular">Connected to %1$s world.</string>
+    <string name="service_description_plural">Connected to %1$s worlds.</string>
+    <string name="service_title">Mukluk MUD Client</string>
+    <string name="service_started">Starting world connection...</string>
+    <string name="service_changed">World connection status changed.</string>
+    
+    <string name="status_description_not_connected">Not connected.</string>
+    <string name="status_description_connecting">Connecting...</string>
+    <string name="status_description_connected">Connected.</string>
+    <string name="status_description_disconnecting">Disconnecting...</string>
+    <string name="status_description_unknown">Unknown connection status?</string>
+    
+    <!--  World List -->
+    <string name="dialog_button_back_disconnect">Disconnect</string>
+    <string name="dialog_button_back_stay_connected">Stay Connected</string>
+    <string name="dialog_message_back">You are currently connected to one or more worlds. Do you want to disconnect?</string>
+    <string name="dialog_message_cache">This will clear all world text from the world window, all of your previous commands from the browsable history and all navigable URLs from the menu and can not be undone.</string>    
+    <string name="dialog_message_delete_world_confirmation">Delete this world?</string>
+    <string name="dialog_message_export_worlds">Export file location:</string>
+    <string name="dialog_message_import_worlds">Import file location:</string>
+    <string name="dialog_message_no_worlds">No worlds have been created. Would you like to add one now?</string>
+    <string name="dialog_title_back">Disconnect From Worlds</string>
+    <string name="dialog_title_cache">Clear %1$s Cache?</string>
+    <string name="dialog_title_export_worlds">Export Worlds</string>
+    <string name="dialog_title_import_worlds">Import Worlds</string> 
+    <string name="dialog_title_no_worlds">Add New World</string> 
+    <string name="list_no_worlds">No worlds have been created.</string>
+    <string name="list_status_not_connected">Not connected.</string>
+    <string name="list_status_connected">Connected.</string>
+    <string name="list_status_connecting">Connecting...</string>
+    <string name="list_status_disconnecting">Disconnected.</string>
+    <string name="menu_about">About</string>
+    <string name="menu_add_world">Add World</string>
+    <string name="menu_copy_world">Copy World</string>
+    <string name="menu_clear_cache">Clear World Cache</string>
+    <string name="menu_delete_world">Delete World</string>
+    <string name="menu_edit_world">Edit World</string>
+    <string name="menu_export_worlds">Export Worlds</string>
+    <string name="menu_import_worlds">Import Worlds</string>
+    <string name="toast_deleted_connected_world">Please disconnect from this world before deleting it.</string>
+    <string name="toast_changes_saved">Changes saved.</string>
+    <string name="toast_export_failure">Unable to write to external media. Your phone\'s SD card may be unavailable or read-only.</string>
+    <string name="toast_export_no_worlds">No worlds to export.</string>
+    <string name="toast_export_success">World list exported to file %1$s</string>
+    <string name="toast_import_failure">Unable to read from external media. There may be a problem with your phone\'s SD card.</string>
+    <string name="toast_import_invalid_file">Specified file %1$s doesn\'t exist.</string>
+    <string name="toast_cache_cleared">%1$s cache cleared</string>
+    <string name="toast_world_host_or_port_not_set">Can\'t connect to this world. Host and port must both be defined.</string>
+
+    <!--  Global Settings -->
+    <string name="title_global_settings">Settings</string>
+    
+    <string name="category_appearance">Appearance</string>
+    <string name="background_title">Background Color</string>
+    <string name="foreground_title">Text Color</string>
+    <string name="echo_color_title">Command Color</string>
+    <string name="color_sample_text">The quick brown fox jumped over 1,234,567,890 lazy dogs.</string>
+    <string name="color_red_label">Red</string>
+    <string name="color_green_label">Green</string>
+    <string name="color_blue_label">Blue</string>
+    <string name="text_size_title">Text Size</string>
+    <string name="text_size_bar_label">Size</string>
+    <string name="full_screen_title">Full Screen</string>
+    <string name="full_screen_summary">Display world window full screen (hide notification bar)</string>
+    <string name="show_autosay_spinner_title">Auto-Say Selector</string>
+    <string name="show_autosay_spinner_summary">Display a selector that lets you auto-say, -emote or -pose to a world</string>
+    <string name="show_enter_button_title">On-Screen Enter Button</string>
+    <string name="show_enter_button_summary">Display an enter button next to the command box</string>
+    <string name="verify_history_navigation_title">Verify History Navigation</string>
+    <string name="verify_history_navigation_summary">Verify navigation to previous commands if there is unsent text in the world window</string>
+    <string name="disable_history_navigation_title">Disable History Navigation</string>
+    <string name="disable_history_navigation_summary">Disable scrolling through previous commands with finger swipe and arrow keys</string>
+    <string name="hide_ad_title">Hide Ad</string>
+    <string name="hide_ad_summary">Hide the ad on the world list page</string>
+    
+    <string name="category_output">Output</string>
+    <string name="vibrate_on_bell_title">Vibrate On Bell</string>
+    <string name="vibrate_on_bell_summary">Vibrate the phone when a bell/alarm character is received</string>
+    
+    <string name="category_command_options">Commands</string>
+    <string name="echo_commands_title">Echo Commands</string>
+    <string name="echo_commands_summary">Echo your commands to the world window</string>
+    <string name="screen_buffer_size_title">Screen Buffer Size</string>
+    <string name="screen_buffer_size_summary">Number of lines to keep in the world window</string>
+    <string name="screen_buffer_dialog_title">Screen Buffer Size</string>
+    <string name="screen_buffer_dialog_message">Number of lines to keep in the world window:</string>
+    <string name="command_buffer_size_title">Command Buffer Size</string>
+    <string name="command_buffer_size_summary">Number of your previous commands to keep in the browsable history</string>
+    <string name="command_buffer_dialog_title">Command Buffer Size</string>
+    <string name="command_buffer_dialog_message">Number of your previous commands to save:</string>
+    <string name="url_buffer_size_title">URL Buffer Size</string>
+    <string name="url_buffer_size_summary">Number of URLs from the world to keep in history</string>
+    <string name="url_buffer_dialog_title">URL Buffer Size</string>
+    <string name="url_buffer_dialog_message">Number of URLs to save:</string>
+    
+    <string name="category_device">Device</string>
+    <string name="keep_screen_awake_title">Keep Screen Awake</string>
+    <string name="keep_screen_awake_summary">Keep screen awake when world window is active</string>
+    <string name="keep_wifi_awake_title">Keep Wi-Fi Awake</string>
+    <string name="keep_wifi_awake_summary">Keep wi-fi connection awake when connected to a world</string>
+
+    <!-- About  -->
+    <string name="title_about">About Mukluk MUD Client</string>
+    <string name="section_installed_version">Installed Version</string>
+    <string name="section_author">Credits</string>
+    <string name="label_author">© 2015 by Dan Caprine</string>
+    <string name="label_facebook_link"><u>https://www.facebook.com/MuklukMudClient</u></string>
+    <string name="section_legal">Legal</string>
+    <string name="label_jackson">Mukluk uses the Jackson JSON parser under the Apache 2.0 license.</string>
+    <string name="label_jackson_link"><u>http://jackson.codehaus.org/</u></string>
+    <string name="label_icons8">Mukluk uses content from Icons8 under the Creative Commons Attribution-NoDerivs 3.0 Unported license.</string>
+    <string name="label_icons8_link"><u>https://icons8.com/</u></string>
+
+    <!--  World Details -->
+    <string name="title_world_details">Edit World Details</string>
+    <string name="category_server">Server</string>
+    <string name="dialog_title_unsaved_changes">Save Changes</string>
+    <string name="dialog_message_unsaved_changes">Save changes to %1$s?</string>
+    <string name="dialog_title_missing_data_unsaved_changes">Save Changes</string>
+    <string name="dialog_message_missing_data_unsaved_changes">You have not entered a name, host and/or port for this world. Save anyway?</string>
+    <string name="hint_host">example.com</string>
+    <string name="hint_name">My MUD Name</string>
+    <string name="hint_port">12345</string>
+    <string name="label_encoding">Encoding</string>
+    <string name="label_host">Address</string>
+    <string name="label_name">World Name</string>   
+    <string name="label_port">Port</string>
+    <string name="category_connection_options">Connection</string>
+    <string name="text_auto_connect">Automatically Connect</string>
+    <string name="label_post_login_command">Post-Connection Command</string>
+    <string name="hint_post_login_command">connect player password</string>
+    <string name="category_misc">Miscellaneous</string>
+    <string name="text_logging">Log to SD Card</string>
+    <string name="text_ansi_color">ANSI Colors Enabled</string>
+    
+    <!--  World Connection -->
+    <string name="title_world_connection">World</string>
+    <string name="console_connected">*** Mukluk is now connected. ***</string>
+    <string name="console_disconnected">*** Mukluk has been disconnected from this world. ***</string>
+    <string name="dialog_message_autoscroll">Pause Scrolling</string>
+    <string name="dialog_title_autoscroll">Disable Auto-Scroll</string>
+    <string name="dialog_title_navigate_history">Navigate History</string>
+    <string name="dialog_message_navigate_history_previous">Navigate to previous command in history? This will delete your current input.</string>
+    <string name="dialog_message_navigate_history_next">Navigate to next command in history? This will delete your current input.</string>
+    <string name="dialog_url_title">URL List</string>
+    <string name="label_btn_enter">Enter</string>
+    <string name="label_cmd_type">Select Auto-Command</string>
+    <string name="menu_cache">Cache</string>
+    <string name="menu_connect">Connect</string>
+    <string name="menu_disconnect">Disconnect</string>
+    <string name="menu_edit_current_world">Edit World</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_start_logging">Start Logging</string>
+    <string name="menu_stop_logging">Stop Logging</string>
+    <string name="toast_bind_failure">Couldn\'t reattach to connection. Try backing out of this window and reopening it.</string>
+    <string name="toast_encoding_changed">Character encoding changed. You will need to disconnect and reconnect to enable the new settings.</string>
+    <string name="toast_logging_failure">Unable to start logging. Your phone\'s SD card may be unavailable or read-only.</string>
+    <string name="toast_logging_off">No longer logging.</string>
+    <string name="toast_logging_on">Now logging to %1$s</string>
+    <string name="toast_no_urls">No URLs found.</string>
+    <string name="toast_world_host_or_port_changed">This world\'s host and/or port were changed. You\'ll need to reconnect to see these changes.</string>
+        
+    <!-- World Connection Help -->
+    <string name="help_console_dialog_title">Console</string>
+    <string name="help_console_dialog_message">
+    This is where text from the world is displayed. Long-press here to pause autoscrolling. Double-tap here to scan for URLs and navigate to them.
+    </string>
+    <string name="help_autoSay_dialog_title">Auto-Say Selector</string>
+    <string name="help_autoSay_dialog_message">
+    Select a value here to automatically prepend commands you send to the world with \"say\", \"pose\", etc. 
+    This selector can be hidden in the Settings menu.
+    </string>
+    <string name="help_enterButton_dialog_title">Enter Button</string>
+    <string name="help_enterButton_dialog_message">Press this button to send the text in the command entry to the connected world. 
+    This button can be hidden in the Settings Menu.</string>
+    <string name="help_commandEntry_dialog_title">Command Entry</string>
+    <string name="help_commandEntry_dialog_message">
+    Enter commands to send to the world here. You can browse your command history with the up and down arrows on your keypad (if available) 
+    or by swiping your finger left or right.
+    </string>
+    <string name="toast_help_mode_on">Touch any item on the screen for more information.</string>
+    
+    <string-array name="cmdTypeArray">
+        <item>[None]</item>
+        <item>Say</item>
+        <item>Emote</item>
+        <item>Pose</item>
+    </string-array>
+</resources>

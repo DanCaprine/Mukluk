@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/world_connection_layout"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+    android:background="@color/black"
+	>
+    <Button
+       android:id="@+id/button_enter"
+       android:text="@string/label_btn_enter"
+       android:layout_height="wrap_content"
+       android:layout_width="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentRight="true"
+       />
+    <Spinner
+        android:id="@+id/spinner_cmd_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:prompt="@string/label_cmd_type"
+        android:entries="@array/cmdTypeArray"
+        />
+	<EditText
+	   android:id="@+id/commandEntry"
+	   android:layout_width="wrap_content"
+	   android:layout_height="wrap_content"
+	   android:layout_alignParentBottom="true"
+	   android:layout_toLeftOf="@id/button_enter"
+	   android:layout_toRightOf="@id/spinner_cmd_type"
+       android:layout_alignWithParentIfMissing="true"
+	   android:singleLine="true"
+	   android:lines="1"
+	   android:scrollHorizontally="true"
+        android:minLines="1"
+        android:maxLines="1"
+        android:background="@color/black"
+        android:editable="true"
+        android:textColor="@color/white" />
+	<ScrollView
+	   android:id="@+id/scroll_console"
+	   android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_above="@id/commandEntry"
+       android:fillViewport="true"
+       android:clickable="false"
+       >
+	   <TextView
+		   android:id="@+id/console"
+		   android:layout_width="fill_parent"
+		   android:layout_height="fill_parent"
+		   android:layout_marginLeft="5dp"
+	       android:layout_marginRight="5dp"
+		   android:editable="false"
+           android:typeface="monospace"
+           android:imeOptions="flagNoExtractUi" />
+    </ScrollView>
+</RelativeLayout>

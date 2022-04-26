@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  Global Settings -->
+    <string name="background_title">Background Colour</string>
+    <string name="foreground_title">Text Colour</string>
+    <string name="echo_color_title">Command Colour</string>
+    
+    <!--  World Details -->
+    <string name="text_ansi_color">ANSI Colours Enabled</string>
+</resources>

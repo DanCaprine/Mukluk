@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item 
+        android:id="@+id/menu_item_edit_world"
+        android:title="@string/menu_edit_world"
+        />
+    <item
+        android:id="@+id/menu_item_copy_world"
+        android:title="@string/menu_copy_world"
+        />
+    <item
+        android:id="@+id/menu_item_clear_world_cache"
+        android:title="@string/menu_clear_cache"
+        />
+    <item 
+        android:id="@+id/menu_item_delete_world"
+        android:title="@string/menu_delete_world"
+        />
+</menu>
