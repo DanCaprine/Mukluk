@@ -1,3 +1,3 @@
-Mukluk MUD Client is an Android M* (MUDs, MUSHs, MOOs, etc.) client that was available on the Google Play Store from 2010 to August 31st, 2023. Features included full ANSI support and the ability to connect to multiple worlds simultaneously. 
+Mukluk MUD Client is an Android M* (MUDs, MUSHs, MOOs, etc.) client that was originally added to the Google Play Store in 2010. It featured full ANSI support and the ability to connect to multiple worlds simultaneously. 
 
-I won't be able to provide any build or usage support, but the code is released under the MIT license, so you can do nearly anything you like with it. Enjoy!
+Mukluk no longer works on more recent versions of Android due to changes in the operating system's behavior and security. The source code is provided for anybody to do whatever they like with it. Enjoy!
